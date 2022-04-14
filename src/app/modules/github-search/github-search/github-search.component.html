@@ -10,7 +10,7 @@
 
 <div class="github-search__repository-list">
   <div class="github-search__repository" *ngFor="let repository of repositoryList$ | async">
-    <app-repository [repository]="repository"></app-repository>
+    <app-repository-card [repository]="repository"></app-repository-card>
   </div>
 </div>
 
