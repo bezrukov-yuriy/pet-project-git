@@ -1,7 +1,8 @@
 # Pet-project: GitHub Search (angular)
 
-- The project is made according to the task before the commit [4361c84a25889ad4fb5fe39d91716901afc304f8](https://github.com/bezrukov-yuriy/pet-project-git/commit/4361c84a25889ad4fb5fe39d91716901afc304f8) 
-- After commit [fb7fb76d2fae5418a668fb79739ee029e779942f](https://github.com/bezrukov-yuriy/pet-project-git/commit/fb7fb76d2fae5418a668fb79739ee029e779942f)  deviated from the task and wanted to play
+ - The project is made according to the task before the commit [4361c84a25889ad4fb5fe39d91716901afc304f8](https://github.com/bezrukov-yuriy/pet-project-git/commit/4361c84a25889ad4fb5fe39d91716901afc304f8)
+
+ - After commit [fb7fb76d2fae5418a668fb79739ee029e779942f](https://github.com/bezrukov-yuriy/pet-project-git/commit/fb7fb76d2fae5418a668fb79739ee029e779942f)  deviated from the task and wanted to play
   
 ---
 #### Тестовое задание для разработчика интерфейсов (Angular)
@@ -13,21 +14,32 @@
 
 ● В приложении должно быть поле для поиска по имени репозитория и список с
 результатом поиска, расположенный под полем поиска.
+
 ● В списке отображаются только первые 20 результатов в виде названия
 репозитория и количество его звезд.
+
 ● Результаты должны отображаться по мере набора текста в поле поиска.
+
 ● Поиск осуществляется только в том случае, если введено более 2-х символов в
 поле поиска.
+
 ● Если нет результатов удовлетворяющих поисковому запросу, выводится
 соответствующее сообщение.
+
 ● Если в поле поиска введено менее 2-х символов, то список с результатами поиска
 должен быть пустым.
+
 ● Необходимо обрабатывать ошибки запросов к API и выводить сообщения
 пользователю.
+
 ● Если запрос к API длится более 1000 мс, то выводится лоадер или
 соответствующий текст.
+
 ● Значение поля поиска должно сохраняться в query-параметре текущего роутера.
+
 ● Приложение должно быть написано с использованием Angular версии не ниже 10.
+
 ● В коде необходимо использовать rxjs, компоненты и сервисы.
+
 ● Разрешено использовать при необходимости любые ui-библиотеки (Angular
 Material, Ng-Zorro, Kendo UI и т. п.)
