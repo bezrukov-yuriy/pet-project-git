@@ -1,0 +1,26 @@
+.repository-card {
+  &__img {
+    width: 32px;
+    border: 1px solid #888;
+    border-radius: 25px;
+  }
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+  }
+
+  &__subtitle-login {
+    margin-left: 14px;
+  }
+
+  &__title {
+    display: flex;
+    font-size: 14px;
+  }
+
+  &__stars {
+    margin-left: 12px;
+    color: #999;
+  }
+}

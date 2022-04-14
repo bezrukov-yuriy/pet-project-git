@@ -1,7 +1,47 @@
 .github-search {
+
+  &__form {
+    display: flex;
+    justify-content: center;
+  }
+
   &__loading {
     width: 100px;
     height: 100px;
     background-color: #000;
+  }
+
+  &__repository-list-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__repository-list {
+    max-width: 600px;
+  }
+
+  &__repository {
+    animation: linear forwards;
+    animation-name: move;
+    animation-duration: 300ms;
+    opacity: 0;
+    margin-left: -20px;
+  }
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+
+  }
+}
+
+@for $i from 1 through 20 {
+  .github-search__repository-list .github-search__repository:nth-child(#{$i}n) {
+      animation-delay: #{$i * 150}ms;
   }
 }

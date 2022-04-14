@@ -1,1 +1,16 @@
-{{repository.name}}: {{repository.stargazers_count}}
+<mat-card>
+  <mat-card-subtitle class="repository-card__subtitle">
+    <img [src]="repository.owner.avatar_url" [alt]="repository.owner.login" class="repository-card__img">
+    <div class="repository-card__subtitle-login">
+      {{repository.owner.login}}
+    </div>
+  </mat-card-subtitle>
+  <mat-card-title class="repository-card__title">
+    <a [href]="repository.url" class="repository-card__name">{{repository.name}}</a>
+    <div class="repository-card__stars">{{repository.stargazers_count | counter}}</div>
+  </mat-card-title>
+  <mat-card-content>
+    {{repository.description}}
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+</mat-card>

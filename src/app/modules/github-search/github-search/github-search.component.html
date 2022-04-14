@@ -1,16 +1,20 @@
-<form [formGroup]="form">
-  <input [formControlName]="searchControlName" type="text" list="search-result">
-  <datalist id="search-result">
-    <option
-      *ngFor="let repository of repositoryList$ | async"
-      [value]="repository.name"
-    ></option>
-   </datalist>
+<form [formGroup]="form" class="github-search__form">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter repository name</mat-label>
+    <input type="text" matInput [formControlName]="searchControlName" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let repository of repositoryList$ | async" [value]="repository.name">
+        {{repository.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </form>
 
-<div class="github-search__repository-list">
-  <div class="github-search__repository" *ngFor="let repository of repositoryList$ | async">
-    <app-repository-card [repository]="repository"></app-repository-card>
+<div class="github-search__repository-list-wrapper">
+  <div class="github-search__repository-list">
+    <div class="github-search__repository" *ngFor="let repository of repositoryList$ | async">
+      <app-repository-card [repository]="repository"></app-repository-card>
+    </div>
   </div>
 </div>
 
