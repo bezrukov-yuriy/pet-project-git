@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <input [formControlName]="searchControlName" type="text" list="search-result">
+  <datalist id="search-result">
+    <option
+      *ngFor="let repository of repositoryList$ | async"
+      [value]="repository.name"
+    ></option>
+   </datalist>
+</form>
+
+<div class="github-search__repository-list">
+  <div class="github-search__repository" *ngFor="let repository of repositoryList$ | async">
+    <app-repository [repository]="repository"></app-repository>
+  </div>
+</div>
+
+<div class="github-search__empty-search" *ngIf="!(repositoryList$ | async)?.length">
+  empty...
+</div>
+
+<div class="github-search__error" *ngIf="error">{{error}}</div>
+
+<div class="github-search__loading" *ngIf="loading$ | async"></div>
