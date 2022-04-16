@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, filter, iif, map, merge, Observable, of, share, skip, Subject, switchMap, take, takeUntil, tap, timer } from 'rxjs';
+import { catchError, combineLatest, delay, filter, finalize, iif, map, merge, Observable, of, share, Subject, switchMap, take, takeUntil, tap, timer } from 'rxjs';
 import { Repository, RepositoryResponse } from '../github-search.model';
 import { GithubSearchService } from '../github-search.service';
 
@@ -18,6 +19,7 @@ export class GithubSearchComponent implements OnInit, OnDestroy {
   repositoryList$: Observable<Repository[]>;
   error: string;
   loading$ = new Subject<boolean>();
+  emptyResult$ = new Subject<boolean>();
   readonly searchControlName = 'search-text';
   readonly timeBeforeLoader = 1000;
 
@@ -27,11 +29,12 @@ export class GithubSearchComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private githubSearchService: GithubSearchService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
     this.bindFormChanges();
+    this.setFormFromQuery();
   }
 
   ngOnDestroy(): void {
@@ -58,21 +61,20 @@ export class GithubSearchComponent implements OnInit, OnDestroy {
                 }
               })
             ),
-            this.githubSearchService.getRepositoryList(searchText),
+            this.githubSearchService.getRepositoryList(searchText)
+              .pipe(finalize(() => this.loading$.next(false))),
           )
             .pipe(
               filter(res => res !== 0),
               map(res => {
                 isRequestComplete = true;
-                this.loading$.next(false);
+                this.emptyResult$.next((<RepositoryResponse>res).total_count === 0);
                 return <RepositoryResponse>res;
               })),
           of({ items: [] })
-        )
-
-        ),
-        catchError(e => {
-          this.error = e;
+        )),
+        catchError((e: HttpErrorResponse) => {
+          this.error = e.message;
           return of({ items: [] });
         }),
         map(res => res.items),
@@ -81,15 +83,16 @@ export class GithubSearchComponent implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
-
     this.form = new FormGroup({
       [this.searchControlName]: new FormControl(''),
     });
+  }
 
+  private setFormFromQuery(): void {
     this.activatedRoute.queryParams
       .pipe(
         takeUntil(this.onDestroy$),
-        skip(1),
+        delay(0), // if use async pipe in template
         take(1),
       )
       .subscribe(params => {
@@ -99,7 +102,7 @@ export class GithubSearchComponent implements OnInit, OnDestroy {
       });
   }
 
-  setQuery(searchText: string): void {
+  private setQuery(searchText: string): void {
     this.router.navigate(
       [],
       {

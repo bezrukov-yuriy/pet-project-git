@@ -11,6 +11,11 @@
     background-color: #000;
   }
 
+  &__empty-search {
+    text-align: center;
+    color: #f00;
+  }
+
   &__repository-list-wrapper {
     display: flex;
     justify-content: space-around;
@@ -33,6 +38,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
     margin-left: 0;
@@ -42,6 +48,6 @@
 
 @for $i from 1 through 20 {
   .github-search__repository-list .github-search__repository:nth-child(#{$i}n) {
-      animation-delay: #{$i * 150}ms;
+    animation-delay: #{$i * 150}ms;
   }
 }

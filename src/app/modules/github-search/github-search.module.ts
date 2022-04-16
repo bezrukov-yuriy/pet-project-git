@@ -31,6 +31,7 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     MatDividerModule,
     MatProgressBarModule,
     MatBadgeModule,
+    MatProgressBarModule,
     SharedModule,
   ]
 })

@@ -10,6 +10,8 @@
   </mat-form-field>
 </form>
 
+<mat-progress-bar mode="buffer" *ngIf="loading$ | async"></mat-progress-bar>
+
 <div class="github-search__repository-list-wrapper">
   <div class="github-search__repository-list">
     <div class="github-search__repository" *ngFor="let repository of repositoryList$ | async">
@@ -18,10 +20,8 @@
   </div>
 </div>
 
-<div class="github-search__empty-search" *ngIf="!(repositoryList$ | async)?.length">
+<div class="github-search__empty-search" *ngIf="emptyResult$ | async">
   empty...
 </div>
 
 <div class="github-search__error" *ngIf="error">{{error}}</div>
-
-<div class="github-search__loading" *ngIf="loading$ | async"></div>
