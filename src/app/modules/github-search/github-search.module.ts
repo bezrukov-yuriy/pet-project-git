@@ -10,7 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { GithubSearchComponent } from './github-search/github-search.component';
 import { RepositoryCardComponent } from './repository-card/repository-card.component';
 import { GithubSearchRoutingModule } from './github-search.routing';
-import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
