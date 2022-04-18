@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, combineLatest, delay, filter, finalize, iif, map, merge, Observable, of, share, Subject, switchMap, take, takeUntil, tap, timer } from 'rxjs';
+import { catchError, delay, filter, finalize, iif, map, merge, Observable, of, share, Subject, switchMap, take, takeUntil, tap, timer } from 'rxjs';
 import { Repository, RepositoryResponse } from '../github-search.model';
 import { GithubSearchService } from '../github-search.service';
 

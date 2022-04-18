@@ -11,4 +11,4 @@ const pipes = [CounterPipe];
     CommonModule,
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
