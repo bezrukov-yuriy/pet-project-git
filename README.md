@@ -1,8 +1,5 @@
 # Pet-project: GitHub Search (angular)
 
- - The project is made according to the task before the commit [4361c84a25889ad4fb5fe39d91716901afc304f8](https://github.com/bezrukov-yuriy/pet-project-git/commit/4361c84a25889ad4fb5fe39d91716901afc304f8)
-
- - After commit [fb7fb76d2fae5418a668fb79739ee029e779942f](https://github.com/bezrukov-yuriy/pet-project-git/commit/fb7fb76d2fae5418a668fb79739ee029e779942f)  deviated from the task and wanted to play
 
  ##### [Run demo: StackBlitz](https://stackblitz.com/github/bezrukov-yuriy/pet-project-git)
   
